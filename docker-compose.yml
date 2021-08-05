@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  database:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'tmob'
+      MYSQL_USER: 'tmob'
+      MYSQL_PASSWORD: 'tmob'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - ./database:/var/lib/mysql
+
+  cache:
+    image: memcached:alpine3.14
+    ports:
+      - "11211:11211"
