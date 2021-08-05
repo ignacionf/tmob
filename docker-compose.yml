@@ -3,6 +3,7 @@ services:
   database:
     image: mysql:latest
     restart: always
+      #    command: --init-file /data/application/init.sql
     environment:
       MYSQL_DATABASE: 'tmob'
       MYSQL_USER: 'tmob'
@@ -13,6 +14,7 @@ services:
     expose:
       - '3306'
     volumes:
+      - ./test_db.sql:/data/application/init.sql
       - ./database:/var/lib/mysql
 
   cache:
